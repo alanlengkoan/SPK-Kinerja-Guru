@@ -104,7 +104,7 @@
                                      <th>NIP</th>
                                      <th>Nama</th>
                                      <th>Kelamin</th>
-                                     <th>Tgl. Lahir</th>
+                                     <th>Tanggal Lahir</th>
                                      <th>Tempat Lahir</th>
                                      <th>Aksi</th>
                                  </tr>
