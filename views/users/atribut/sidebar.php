@@ -21,6 +21,18 @@
                     </a>
                 </li>
                 <h3 class="menu-title">Master</h3>
+                <li class="<?= ($_REQUEST['content'] == "alternatif") ? 'active' : '' ?>">
+                    <a href="alternatif">
+                        <i class="menu-icon fa fa-list"></i>
+                        Guru
+                    </a>
+                </li>
+                <li class="<?= ($_REQUEST['content'] == "kriteria") ? 'active' : '' ?>">
+                    <a href="kriteria">
+                        <i class="menu-icon fa fa-list"></i>
+                        Kriteria
+                    </a>
+                </li>
                 <li class="<?= ($_REQUEST['content'] == "penilaian") ? 'active' : '' ?>">
                     <a href="penilaian">
                         <i class="menu-icon fa fa-list"></i>
@@ -32,12 +44,6 @@
                     <a href="konsultasi">
                         <i class="menu-icon fa fa-list"></i>
                         Konsultasi
-                    </a>
-                </li>
-                <li class="<?= ($_REQUEST['content'] == "konsultasi_hasil") ? 'active' : '' ?>">
-                    <a href="konsultasi_hasil">
-                        <i class="menu-icon fa fa-list"></i>
-                        Hasil Konsultasi
                     </a>
                 </li>
                 <h3 class="menu-title">Laporan</h3>

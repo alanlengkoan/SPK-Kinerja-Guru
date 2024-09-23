@@ -33,7 +33,7 @@ if (empty($_SESSION['id_users'])) {
 			header("Location: ../../pages/login&akses");
 			exit;
 		}
-	} else if ($data['level'] != 'users') {
+	} else if ($data['level'] != 'kepsek') {
 		// apa bila level tidak sama
 		header("Location: ../../pages/login&akses");
 		exit;

@@ -48,7 +48,7 @@ if (count($error) != 0) {
                         }
 
                         exit(json_encode(array('status' => true, 'link' => '../views/admin/dashboard')));
-                    } else if ($data->level == 'users') {
+                    } else if ($data->level == 'kepsek') {
                         // set session
                         $_SESSION['id_users'] = $data->id_users;
                         $_SESSION['login']    = true;

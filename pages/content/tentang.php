@@ -42,9 +42,6 @@
                     <li class="nav-item <?= ($_REQUEST['content'] == "tentang") ? 'active' : '' ?>">
                         <a class="nav-link" href="tentang">Tentang</a>
                     </li>
-                    <li class="nav-item <?= ($_REQUEST['content'] == "register") ? 'active' : '' ?>">
-                        <a class="nav-link" href="register">Daftar</a>
-                    </li>
                     <li class="nav-item <?= ($_REQUEST['content'] == "login") ? 'active' : '' ?>">
                         <a class="nav-link" href="login">Masuk</a>
                     </li>

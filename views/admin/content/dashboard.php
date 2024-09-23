@@ -19,7 +19,7 @@
     <div class="content mt-3">
         <div class="col-sm-12">
             <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                Selamat datang <b>ADMIN</b> di sistem pendukung keputusan Metode Aras.
+                Selamat datang <b>Wakil Kepala Sekolah</b> di sistem pendukung keputusan Metode Aras.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -40,7 +40,7 @@
                     <div class="stat-widget-one">
                         <div class="stat-icon dib"><i class="fa fa-list text-success border-success"></i></div>
                         <div class="stat-content dib">
-                            <div class="stat-text">Alternatif</div>
+                            <div class="stat-text">Guru</div>
                             <div class="stat-digit">
                                 <?php
                                 $qry_alternatif = $pdo->GetAll('tb_alternatif', 'id_alternatif');
@@ -135,10 +135,10 @@
                     <div class="stat-widget-one">
                         <div class="stat-icon dib"><i class="fa fa-users text-default border-default"></i></div>
                         <div class="stat-content dib">
-                            <div class="stat-text">Users</div>
+                            <div class="stat-text">Kepala Sekolah</div>
                             <div class="stat-digit">
                                 <?php
-                                $qry_users = $pdo->GetWhere('tb_users', 'level', 'users');
+                                $qry_users = $pdo->GetWhere('tb_users', 'level', 'kepsek');
                                 $sum_users = $qry_users->rowCount();
                                 echo $sum_users;
                                 ?>

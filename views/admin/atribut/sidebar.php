@@ -24,7 +24,7 @@
                 <li class="<?= ($_REQUEST['content'] == "alternatif") ? 'active' : '' ?>">
                     <a href="alternatif">
                         <i class="menu-icon fa fa-list"></i>
-                        Alternatif
+                        Guru
                     </a>
                 </li>
                 <li class="<?= ($_REQUEST['content'] == "kriteria") ? 'active' : '' ?>">
@@ -45,30 +45,11 @@
                         Penilaian
                     </a>
                 </li>
-                <li class="<?= ($_REQUEST['content'] == "evaluasi") ? 'active' : '' ?>">
-                    <a href="evaluasi">
-                        <i class="menu-icon fa fa-list"></i>
-                        Evaluasi
-                    </a>
-                </li>
-                <li class="<?= ($_REQUEST['content'] == "algoritma") ? 'active' : '' ?>">
-                    <a href="algoritma">
-                        <i class="menu-icon fa fa-list"></i>
-                        Algoritma
-                    </a>
-                </li>
                 <h3 class="menu-title">Pustaka</h3>
                 <li class="<?= ($_REQUEST['content'] == "users") ? 'active' : '' ?>">
                     <a href="users">
                         <i class="menu-icon fa fa-users"></i>
-                        Users
-                    </a>
-                </li>
-                <h3 class="menu-title">Laporan</h3>
-                <li class="<?= ($_REQUEST['content'] == "riwayat") ? 'active' : '' ?>">
-                    <a href="riwayat">
-                        <i class="menu-icon fa fa-list"></i>
-                        Hasil Konsultasi
+                        Kepala Sekolah
                     </a>
                 </li>
             </ul>

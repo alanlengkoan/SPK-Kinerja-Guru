@@ -2,7 +2,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Hasil Algoritma</h1>
+                    <h1>Kepala Sekolah</h1>
                 </div>
             </div>
         </div>
@@ -11,7 +11,7 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="dashboard">Dashboard</a></li>
-                        <li class="active">Hasil Algoritma</li>
+                        <li class="active">Kepala Sekolah</li>
                     </ol>
                 </div>
             </div>

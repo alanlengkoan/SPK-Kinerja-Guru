@@ -12,11 +12,11 @@ $mylog = new my_login;
 $myfun = new my_function;
 
 // untuk alternatif
-$sql_alternatif = "SELECT id_alternatif, nama FROM tb_alternatif";
+$sql_alternatif = "SELECT * FROM tb_alternatif";
 $res_alternatif = $pdo->Query($sql_alternatif);
 $alternatif = [];
 while ($row_a = $res_alternatif->fetch(PDO::FETCH_OBJ)) {
-    $alternatif[$row_a->id_alternatif] = $row_a->nama;
+    $alternatif[$row_a->id_alternatif] = $row_a;
 }
 
 // ambil data laporan
@@ -24,6 +24,11 @@ $id_riwayat   = $_GET['id_riwayat'];
 $qryLaporan   = $pdo->GetWhere('tb_riwayat', 'id_riwayat', $id_riwayat);
 $rowLaporan   = $qryLaporan->fetch(PDO::FETCH_OBJ);
 $hasil_metode = json_decode($rowLaporan->hasil, true);
+
+// echo '<pre>';
+// print_r($alternatif);
+// print_r($alternatif[1]->id_alternatif);
+// die();
 ?>
 
 <!-- CSS -->
@@ -79,7 +84,11 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
         <thead>
             <tr>
                 <th>Ranking</th>
-                <th>Alternatif</th>
+                <th>NIP</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Tanggal Lahir</th>
+                <th>Tempat Lahir</th>
                 <th>Poin</th>
             </tr>
         </thead>
@@ -92,7 +101,11 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
             foreach ($hasil_metode as $key => $value) { ?>
                 <tr>
                     <td><?= $ranking++ ?></td>
-                    <td><?= $alternatif[$key] ?></td>
+                    <td><?= $alternatif[$key]->nip ?></td>
+                    <td><?= $alternatif[$key]->nama ?></td>
+                    <td><?= $alternatif[$key]->kelamin ?></td>
+                    <td><?= $alternatif[$key]->tgl_lahir ?></td>
+                    <td><?= $alternatif[$key]->tmp_lahir ?></td>
                     <td><?= $value ?></td>
                 </tr>
             <?php } ?>
@@ -102,7 +115,7 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
     <br /><br />
 
     <p>
-        Berdasarkan Hasil perhitungan Metode Aras, Alternatif <b><?= $alternatif[$index] ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
+        Berdasarkan Hasil Keputusan perhitungan Metode Aras, Guru atas nama <b><?= $alternatif[$index]->nama ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
     </p>
 </div>
 

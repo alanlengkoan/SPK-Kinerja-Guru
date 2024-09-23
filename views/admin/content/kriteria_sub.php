@@ -63,7 +63,14 @@
                                      <label for="nilai" class=" form-control-label">Nilai&nbsp;*</label>
                                  </div>
                                  <div class="col-12 col-md-9">
-                                     <input type="number" id="nilai" name="nilai" class="form-control form-control-sm" placeholder="Masukkan Nilai" />
+                                     <select name="nilai" id="nilai" class="form-control form-control-sm">
+                                        <option value="">Pilih</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                     </select>
                                      <small class="help-block form-text error"></small>
                                  </div>
                              </div>
