@@ -89,7 +89,10 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
                 <th>Jenis Kelamin</th>
                 <th>Tanggal Lahir</th>
                 <th>Tempat Lahir</th>
-                <th>Poin</th>
+                <th>Nilai</th>
+                <th>Grade</th>
+                <th>Predikat</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody align="center">
@@ -98,7 +101,31 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
             $index = key($hasil_metode);
 
             $ranking = 1;
-            foreach ($hasil_metode as $key => $value) { ?>
+            foreach ($hasil_metode as $key => $value) { 
+                $nilai = round(($value * 100), 0);
+
+                if ($nilai > 80) {
+                    $grade    = 'A';
+                    $predikat = 'Sangat Baik';
+                    $status   = 'Reward';
+                } elseif ($nilai > 75 ) {
+                    $grade    = 'B';
+                    $predikat = 'Baik';
+                    $status   = 'Reward';
+                } elseif ($nilai > 70 ) {
+                    $grade    = 'C';
+                    $predikat = 'Kurang Baik';
+                    $status   = 'Evaluasi';
+                } elseif ($nilai > 55) {
+                    $grade    = 'D';
+                    $predikat = 'Tidak Baik';
+                    $status   = 'Evaluasi & Konsekuensi';
+                } else {
+                    $grade    = 'E';
+                    $predikat = 'Sangat Tidak Baik';
+                    $status   = 'Evaluasi & Konsekuensi';
+                }
+                ?>
                 <tr>
                     <td><?= $ranking++ ?></td>
                     <td><?= $alternatif[$key]->nip ?></td>
@@ -106,7 +133,10 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
                     <td><?= $alternatif[$key]->kelamin ?></td>
                     <td><?= $alternatif[$key]->tgl_lahir ?></td>
                     <td><?= $alternatif[$key]->tmp_lahir ?></td>
-                    <td><?= $value ?></td>
+                    <td><?= $nilai ?></td>
+                    <td><?= $grade ?></td>
+                    <td><?= $predikat ?></td>
+                    <td><?= $status ?></td>
                 </tr>
             <?php } ?>
         </tbody>

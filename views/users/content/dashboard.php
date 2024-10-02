@@ -28,9 +28,48 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Sistem Pendukung Keputusan Metode Aras</h3>
-                    <p class="text-minify">
+                    <h3 class="card-title">
+                        Sistem Pendukung Keputusan Metode Aras
+                    </h3>
+                    <p>
+                        Kompetensi
                     </p>
+                    <ul style="padding-left: 40px !important;">
+                        <li>
+                            <b>Pedagogik</b>
+                        </li>
+                        <ol style="padding-left: 40px !important;">
+                            <li>Mengenal karakteristik peserta didik.</li>
+                            <li>Menguasasi teori belajar dan prinsip-prinsip pembelajaran yang mendidik.</li>
+                            <li>Pengembangan kurikulum.</li>
+                            <li>Kegiatan pembelajaran yang mendidik.</li>
+                            <li>Pengembangan potensi peserta didik.</li>
+                            <li>Komunikasi dengan peserta didik.</li>
+                            <li>Penilaian dan evaluasi.</li>
+                        </ol>
+                        <li>
+                            <b>Kepribadian</b>
+                        </li>
+                        <ol style="padding-left: 40px !important;">
+                            <li>Bertindak sesuai dengan norma agama, hukum, sosial, dan kebudayaan nasional.</li>
+                            <li>Menunjukkan pribadi yang dewasa dan teladan.</li>
+                            <li>Etos Kerja, tanggung jawab yang tinggi, rasa bangga menjadi guru.</li>
+                        </ol>
+                        <li>
+                            <b>Sosial</b>
+                        </li>
+                        <ol style="padding-left: 40px !important;">
+                            <li>Bersikap inklusif, bertindak obyektif, serta tidak diskriminatif.</li>
+                            <li>Komunikasi dengan sesama guru, tenaga kependidikan, orangtua, peserta didik, dan masyarakat.</li>
+                        </ol>
+                        <li>
+                            <b>Pedagogik</b>
+                        </li>
+                        <ol style="padding-left: 40px !important;">
+                            <li>Penguasaan materi, struktur, konsep, dan pola pikir keilmuan yang mendukung mata pelajaran yang diampu.</li>
+                            <li>Penguasaan materi, struktur, konsep, dan pola pikir keilmuan yang mendukung mata pelajaran yang diampu.</li>
+                        </ol>
+                    </ul>
                 </div>
             </div>
         </div>
