@@ -80,9 +80,6 @@ if (!isset($_SESSION['token'])) {
 							</label>
 						</div>
 						<button type="submit" name="masuk" id="masuk" class="btn btn-success btn-flat m-b-30 m-t-30">Masuk</button>
-						<div class="register-link m-t-15 text-center">
-							<p>Belum punya akun ? Daftar di <a href="register">sini</a></p>
-						</div>
 					</form>
 				</div>
 			</div>

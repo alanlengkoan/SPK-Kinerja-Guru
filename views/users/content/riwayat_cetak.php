@@ -101,18 +101,18 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
             $index = key($hasil_metode);
 
             $ranking = 1;
-            foreach ($hasil_metode as $key => $value) { 
+            foreach ($hasil_metode as $key => $value) {
                 $nilai = round(($value * 100), 0);
 
                 if ($nilai > 80) {
                     $grade    = 'A';
                     $predikat = 'Sangat Baik';
                     $status   = 'Reward';
-                } elseif ($nilai > 75 ) {
+                } elseif ($nilai > 75) {
                     $grade    = 'B';
                     $predikat = 'Baik';
                     $status   = 'Reward';
-                } elseif ($nilai > 70 ) {
+                } elseif ($nilai > 70) {
                     $grade    = 'C';
                     $predikat = 'Kurang Baik';
                     $status   = 'Evaluasi';
@@ -125,7 +125,7 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
                     $predikat = 'Sangat Tidak Baik';
                     $status   = 'Evaluasi & Konsekuensi';
                 }
-                ?>
+            ?>
                 <tr>
                     <td><?= $ranking++ ?></td>
                     <td><?= $alternatif[$key]->nip ?></td>
@@ -147,6 +147,55 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
     <p>
         Berdasarkan Hasil Keputusan perhitungan Metode Aras, Guru atas nama <b><?= $alternatif[$index]->nama ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
     </p>
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
+
+    <h3>Keterangan</h3>
+
+    <br /><br />
+
+    <table align="center" border="1">
+        <thead>
+            <tr>
+                <th>Nilai</th>
+                <th>Grade</th>
+                <th>Predikat</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>80 - 100</td>
+                <td>A</td>
+                <td>Sangat Baik</td>
+                <td>Reward</td>
+            </tr>
+            <tr>
+                <td>75 - 79</td>
+                <td>B</td>
+                <td>Baik</td>
+                <td>Reward</td>
+            </tr>
+            <tr>
+                <td>70 - 74</td>
+                <td>C</td>
+                <td>Kurang Baik</td>
+                <td>Evaluasi</td>
+            </tr>
+            <tr>
+                <td>55 - 69</td>
+                <td>D</td>
+                <td>Tidak Baik</td>
+                <td>Evaluasi & Konsekuensi</td>
+            </tr>
+            <tr>
+                <td>0 - 54</td>
+                <td>E</td>
+                <td>Sangat Tidak Baik</td>
+                <td>Evaluasi & Konsekuensi</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <?php

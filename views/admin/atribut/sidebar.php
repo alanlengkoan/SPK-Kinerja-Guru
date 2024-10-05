@@ -27,16 +27,35 @@
                         Guru
                     </a>
                 </li>
+                <h3 class="menu-title">Kriteria</h3>
+                <li class="<?= ($_REQUEST['content'] == "aspek") ? 'active' : '' ?>">
+                    <a href="aspek">
+                        <i class="menu-icon fa fa-list"></i>
+                        Aspek
+                    </a>
+                </li>
+                <li class="<?= ($_REQUEST['content'] == "poin") ? 'active' : '' ?>">
+                    <a href="poin">
+                        <i class="menu-icon fa fa-list"></i>
+                        Poin
+                    </a>
+                </li>
                 <li class="<?= ($_REQUEST['content'] == "kriteria") ? 'active' : '' ?>">
                     <a href="kriteria">
                         <i class="menu-icon fa fa-list"></i>
-                        Kriteria
+                        Pertanyaan
                     </a>
                 </li>
                 <li class="<?= ($_REQUEST['content'] == "kriteria_sub") ? 'active' : '' ?>">
                     <a href="kriteria_sub">
                         <i class="menu-icon fa fa-list"></i>
-                        Kriteria Sub
+                        Skala
+                    </a>
+                </li>
+                <li class="<?= ($_REQUEST['content'] == "kompetensi") ? 'active' : '' ?>">
+                    <a href="kompetensi">
+                        <i class="menu-icon fa fa-list"></i>
+                        Kompetensi
                     </a>
                 </li>
                 <li class="<?= ($_REQUEST['content'] == "penilaian") ? 'active' : '' ?>">

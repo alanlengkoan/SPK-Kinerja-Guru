@@ -305,8 +305,15 @@
                                <thead align="center">
                                    <tr>
                                        <th>Rangking</th>
-                                       <th>Alternatif</th>
-                                       <th>Hasil Akhir</th>
+                                       <th>NIP</th>
+                                       <th>Nama</th>
+                                       <th>Jenis Kelamin</th>
+                                       <th>Tanggal Lahir</th>
+                                       <th>Tempat Lahir</th>
+                                       <th>Nilai</th>
+                                       <th>Grade</th>
+                                       <th>Predikat</th>
+                                       <th>Status</th>
                                    </tr>
                                </thead>
                                <tbody align="center">
@@ -315,11 +322,42 @@
                                     $index = key($perangkingan);
 
                                     $rangking = 1;
-                                    foreach ($perangkingan as $key => $value) : ?>
+                                    foreach ($perangkingan as $key => $value) :
+                                        $nilai = round(($value * 100), 0);
+
+                                        if ($nilai > 80) {
+                                            $grade    = 'A';
+                                            $predikat = 'Sangat Baik';
+                                            $status   = 'Reward';
+                                        } elseif ($nilai > 75) {
+                                            $grade    = 'B';
+                                            $predikat = 'Baik';
+                                            $status   = 'Reward';
+                                        } elseif ($nilai > 70) {
+                                            $grade    = 'C';
+                                            $predikat = 'Kurang Baik';
+                                            $status   = 'Evaluasi';
+                                        } elseif ($nilai > 55) {
+                                            $grade    = 'D';
+                                            $predikat = 'Tidak Baik';
+                                            $status   = 'Evaluasi & Konsekuensi';
+                                        } else {
+                                            $grade    = 'E';
+                                            $predikat = 'Sangat Tidak Baik';
+                                            $status   = 'Evaluasi & Konsekuensi';
+                                        }
+                                    ?>
                                        <tr>
                                            <td><?= $rangking++ ?></td>
-                                           <td><?= $alternatif[$key] ?></td>
-                                           <td><?= $value ?></td>
+                                           <td><?= $alternatif[$key]->nip ?></td>
+                                           <td><?= $alternatif[$key]->nama ?></td>
+                                           <td><?= $alternatif[$key]->kelamin ?></td>
+                                           <td><?= $alternatif[$key]->tgl_lahir ?></td>
+                                           <td><?= $alternatif[$key]->tmp_lahir ?></td>
+                                           <td><?= $nilai ?></td>
+                                           <td><?= $grade ?></td>
+                                           <td><?= $predikat ?></td>
+                                           <td><?= $status ?></td>
                                        </tr>
                                    <?php endforeach; ?>
                                </tbody>

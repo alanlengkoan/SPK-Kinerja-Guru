@@ -1,4 +1,5 @@
 <?php
+$idp = strip_tags($_POST['id_poin']);
 $nma = strip_tags($_POST['nama']);
 $bot = strip_tags($_POST['bobot']);
 $tip = strip_tags($_POST['tipe']);
@@ -22,7 +23,7 @@ if (count($error) != 0) {
   exit(json_encode(array('title' => 'Gagal!', 'text' => 'Data gagal ditambahkan!', 'type' => 'error', 'button' => 'Ok!', 'errors' => $error)));
 } else {
   if (empty($_POST['id_kriteria'])) {
-    $ins = $pdo->Insert("tb_kriteria", ["nama", "bobot", "tipe"], [$nma, $bot, $tip]);
+    $ins = $pdo->Insert("tb_kriteria", ["id_poin", "nama", "bobot", "tipe"], [$idp, $nma, $bot, $tip]);
     if ($ins == 1) {
       exit(json_encode(array('title' => 'Berhasil!', 'text' => 'Data ditambah!', 'type' => 'success', 'button' => 'Ok!')));
     } else {
@@ -30,7 +31,7 @@ if (count($error) != 0) {
     }
   } else {
     $idk = strip_tags($_POST['id_kriteria']);
-    $upd = $pdo->Update('tb_kriteria', 'id_kriteria', $idk, ['nama', 'bobot', 'tipe'], [$nma, $bot, $tip]);
+    $upd = $pdo->Update('tb_kriteria', 'id_kriteria', $idk, ['id_poin', 'nama', 'bobot', 'tipe'], [$idp, $nma, $bot, $tip]);
     if ($upd == 1) {
       exit(json_encode(array('title' => 'Berhasil!', 'text' => 'Data diubah.', 'type' => 'success', 'button' => 'Ok!')));
     } else {

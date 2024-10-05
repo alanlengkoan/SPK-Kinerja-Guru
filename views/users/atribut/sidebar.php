@@ -27,10 +27,16 @@
                         Guru
                     </a>
                 </li>
-                <li class="<?= ($_REQUEST['content'] == "kriteria") ? 'active' : '' ?>">
-                    <a href="kriteria">
+                <li class="<?= ($_REQUEST['content'] == "kompetensi") ? 'active' : '' ?>">
+                    <a href="kompetensi">
                         <i class="menu-icon fa fa-list"></i>
-                        Kriteria
+                        Kompetensi
+                    </a>
+                </li>
+                <li class="<?= ($_REQUEST['content'] == "pertanyaan") ? 'active' : '' ?>">
+                    <a href="pertanyaan">
+                        <i class="menu-icon fa fa-list"></i>
+                        Pertanyaan
                     </a>
                 </li>
                 <li class="<?= ($_REQUEST['content'] == "penilaian") ? 'active' : '' ?>">
