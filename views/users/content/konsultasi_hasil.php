@@ -1,10 +1,12 @@
    <?php
     // untuk alternatif
-    $sql_alternatif = "SELECT id_alternatif, nama FROM tb_alternatif";
+    $sql_alternatif = "SELECT id_alternatif, nip, nama, kelamin, tmp_lahir, tgl_lahir FROM tb_alternatif";
     $res_alternatif = $pdo->Query($sql_alternatif);
     $alternatif     = [];
+    $guru           = [];
     while ($row_a = $res_alternatif->fetch(PDO::FETCH_OBJ)) {
         $alternatif[$row_a->id_alternatif] = $row_a->nama;
+        $guru[$row_a->id_alternatif]       = $row_a;
     }
 
     // untuk kriteria
@@ -349,11 +351,11 @@
                                     ?>
                                        <tr>
                                            <td><?= $rangking++ ?></td>
-                                           <td><?= $alternatif[$key]->nip ?></td>
-                                           <td><?= $alternatif[$key]->nama ?></td>
-                                           <td><?= $alternatif[$key]->kelamin ?></td>
-                                           <td><?= $alternatif[$key]->tgl_lahir ?></td>
-                                           <td><?= $alternatif[$key]->tmp_lahir ?></td>
+                                           <td><?= $guru[$key]->nip ?></td>
+                                           <td><?= $guru[$key]->nama ?></td>
+                                           <td><?= $guru[$key]->kelamin ?></td>
+                                           <td><?= $guru[$key]->tgl_lahir ?></td>
+                                           <td><?= $guru[$key]->tmp_lahir ?></td>
                                            <td><?= $nilai ?></td>
                                            <td><?= $grade ?></td>
                                            <td><?= $predikat ?></td>

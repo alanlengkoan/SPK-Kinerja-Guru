@@ -33,6 +33,7 @@
                          <!-- end:: id -->
 
                          <div class="card-body card-block">
+
                              <div class="row form-group">
                                  <div class="col col-md-3">
                                      <label for="nama" class=" form-control-label">Guru&nbsp;*</label>
@@ -50,26 +51,51 @@
                                  </div>
                              </div>
                              <?php
-                                $query1 = $pdo->GetAll('tb_kriteria', 'id_kriteria');
-                                $row = 0;
-                                while ($row_k = $query1->fetch(PDO::FETCH_OBJ)) { ?>
-                                 <div class="row form-group">
-                                     <div class="col col-md-3">
-                                         <label for="bobot" class=" form-control-label"><?= $row_k->nama ?>&nbsp;*</label>
-                                     </div>
-                                     <div class="col-12 col-md-9">
-                                         <input type="hidden" name="id_kriteria[]" value="<?= $row_k->id_kriteria ?>" />
-                                         <select name="nilai[]" id="nilai_<?= $row++ ?>" class="form-control form-control-sm">
-                                             <option value="">- Pilih -</option>
+                                $query  = $pdo->GetAll('tb_aspek', 'id_aspek');
+                                $jumlah = $query->rowCount();
+                                if ($jumlah > 0) {
+                                    while ($row = $query->fetch(PDO::FETCH_OBJ)) { ?>
+                                     <h4><?= $row->nama; ?></h4>
+                                     <hr />
+                                     <?php
+                                        $query2  = $pdo->GetWhere('tb_poin', 'id_aspek', $row->id_aspek);
+                                        $jumlah2  = $query2->rowCount();
+                                        if ($jumlah2 > 0) {
+                                            while ($row2 = $query2->fetch(PDO::FETCH_OBJ)) { ?>
+                                             <p><?= $row2->nama; ?></p>
+
                                              <?php
-                                                $query2 = $pdo->GetWhere('tb_kriteria_sub', 'id_kriteria', $row_k->id_kriteria);
-                                                while ($row_s = $query2->fetch(PDO::FETCH_OBJ)) { ?>
-                                                 <option value="<?= $row_s->nilai ?>"><?= $row_s->nama ?></option>
+                                                $query3   = $pdo->GetWhere('tb_kriteria', 'id_poin', $row2->id_poin);
+                                                $jumlah3  = $query3->rowCount();
+                                                $num_row  = 0;
+                                                if ($jumlah3 > 0) {
+                                                    while ($row_k = $query3->fetch(PDO::FETCH_OBJ)) { ?>
+
+                                                     <div class="row form-group">
+                                                         <div class="col col-md-3">
+                                                             <label for="bobot" class=" form-control-label"><?= $row_k->nama ?>&nbsp;*</label>
+                                                         </div>
+                                                         <div class="col-12 col-md-9">
+                                                             <input type="hidden" name="id_kriteria[]" value="<?= $row_k->id_kriteria ?>" />
+                                                             <select name="nilai[]" id="nilai_<?= $num_row++ ?>" class="form-control form-control-sm">
+                                                                 <option value="">- Pilih -</option>
+                                                                 <?php
+                                                                    $query2 = $pdo->GetWhere('tb_kriteria_sub', 'id_kriteria', $row_k->id_kriteria);
+                                                                    while ($row_s = $query2->fetch(PDO::FETCH_OBJ)) { ?>
+                                                                     <option value="<?= $row_s->nilai ?>"><?= $row_s->nama ?></option>
+                                                                 <?php } ?>
+                                                             </select>
+                                                             <small class="help-block form-text error"></small>
+                                                         </div>
+                                                     </div>
+
+                                                 <?php } ?>
                                              <?php } ?>
-                                         </select>
-                                         <small class="help-block form-text error"></small>
-                                     </div>
-                                 </div>
+
+                                         <?php } ?>
+                                     <?php } ?>
+                                     <br />
+                                 <?php } ?>
                              <?php } ?>
                          </div>
                          <div class="card-footer">
@@ -121,11 +147,6 @@
                          <div class="row">
                              <div class="col-6">
                                  <h5>Tabel</h5>
-                             </div>
-                             <div class="col-6">
-                                 <a href="konsultasi_hasil" class="btn btn-primary float-right">
-                                     <i class="fa fa-refresh"></i> Hasil Konsultasi
-                                 </a>
                              </div>
                          </div>
                      </div>

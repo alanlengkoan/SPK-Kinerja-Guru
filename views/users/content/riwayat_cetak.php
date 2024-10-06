@@ -24,11 +24,6 @@ $id_riwayat   = $_GET['id_riwayat'];
 $qryLaporan   = $pdo->GetWhere('tb_riwayat', 'id_riwayat', $id_riwayat);
 $rowLaporan   = $qryLaporan->fetch(PDO::FETCH_OBJ);
 $hasil_metode = json_decode($rowLaporan->hasil, true);
-
-// echo '<pre>';
-// print_r($alternatif);
-// print_r($alternatif[1]->id_alternatif);
-// die();
 ?>
 
 <!-- CSS -->
@@ -67,7 +62,8 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
     <table align="center">
         <tr>
             <td width="600" align="center">
-                <h4>SISTEM PENDUKUNG KEPUTUSAN METODE ARAS</h4>
+                <h4>LAPORAN HASIL KEPUTUSAN PENILAIAN KINERJA GURU</h4>
+                <h4>SMA FRATER MAKASSAR</h4>
             </td>
         </tr>
     </table>
@@ -148,7 +144,7 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
         Berdasarkan Hasil Keputusan perhitungan Metode Aras, Guru atas nama <b><?= $alternatif[$index]->nama ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
     </p>
 
-    <br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br />
 
     <h3>Keterangan</h3>
 
@@ -195,6 +191,24 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
                 <td>Evaluasi & Konsekuensi</td>
             </tr>
         </tbody>
+    </table>
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
+
+    <table>
+        <tr>
+            <td width="500"></td>
+            <td>
+                <p>Mengetahui,</p>
+                <p>Kepala SMA Frater Makassar</p>
+                <br />
+                <br />
+                <br />
+                <br />
+                <p class="nama">Fr. Silvianus Gole HHK, M.Pd</p>
+                <p>NIP. 19810311 200903 1 001</p>
+            </td>
+        </tr>
     </table>
 </div>
 

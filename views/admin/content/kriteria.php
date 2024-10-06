@@ -121,8 +121,8 @@
                                              <td><?= $row->bobot; ?></td>
                                              <td><?= $row->tipe; ?></td>
                                              <td>
-                                                 <button class="btn btn-primary btn-sm btn-action" id="upd" data-id="<?= $row->id_poin ?>"><i class="fa fa-edit"></i> Ubah</button>&nbsp;
-                                                 <button class="btn btn-danger btn-sm btn-action" id="del" data-id="<?= $row->id_poin ?>"><i class="fa fa-trash"></i> Hapus</button>
+                                                 <button class="btn btn-primary btn-sm btn-action" id="upd" data-id="<?= $row->id_kriteria ?>"><i class="fa fa-edit"></i> Ubah</button>&nbsp;
+                                                 <button class="btn btn-danger btn-sm btn-action" id="del" data-id="<?= $row->id_kriteria ?>"><i class="fa fa-trash"></i> Hapus</button>
                                              </td>
                                          </tr>
                                      <?php } ?>

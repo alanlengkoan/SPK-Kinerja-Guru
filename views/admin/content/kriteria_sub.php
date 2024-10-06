@@ -35,7 +35,7 @@
                          <div class="card-body card-block">
                              <div class="row form-group">
                                  <div class="col col-md-3">
-                                     <label for="id_kriteria" class=" form-control-label">Kriteria&nbsp;*</label>
+                                     <label for="id_kriteria" class=" form-control-label">Pertanyaan&nbsp;*</label>
                                  </div>
                                  <div class="col-12 col-md-9">
                                      <select name="id_kriteria" id="id_kriteria" class="form-control form-control-sm">
@@ -69,7 +69,6 @@
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-                                        <option value="5">5</option>
                                      </select>
                                      <small class="help-block form-text error"></small>
                                  </div>

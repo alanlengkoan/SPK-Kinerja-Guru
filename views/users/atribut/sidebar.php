@@ -49,7 +49,13 @@
                 <li class="<?= ($_REQUEST['content'] == "konsultasi") ? 'active' : '' ?>">
                     <a href="konsultasi">
                         <i class="menu-icon fa fa-list"></i>
-                        Konsultasi
+                        Evaluasi
+                    </a>
+                </li>
+                <li class="<?= ($_REQUEST['content'] == "konsultasi_hasil") ? 'active' : '' ?>">
+                    <a href="konsultasi_hasil">
+                        <i class="menu-icon fa fa-list"></i>
+                        Hasil Evaluasi
                     </a>
                 </li>
                 <h3 class="menu-title">Laporan</h3>

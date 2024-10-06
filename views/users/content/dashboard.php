@@ -57,28 +57,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="fa fa-list text-primary border-primary"></i></div>
+                        <div class="stat-icon dib"><i class="fa fa-list text-success border-success"></i></div>
                         <div class="stat-content dib">
-                            <div class="stat-text">Kriteria</div>
-                            <div class="stat-digit">
-                                <?php
-                                $qry_kriteria = $pdo->GetAll('tb_kriteria', 'id_kriteria');
-                                $sum_kriteria = $qry_kriteria->rowCount();
-                                echo $sum_kriteria;
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="fa fa-list text-warning border-warning"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Kriteria Sub</div>
+                            <div class="stat-text">Kompetensi</div>
                             <div class="stat-digit">
                                 <?php
                                 $qry_kriteria_sub = $pdo->GetAll('tb_kriteria_sub', 'id_kriteria_sub');
@@ -95,7 +76,26 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="fa fa-list text-info border-info"></i></div>
+                        <div class="stat-icon dib"><i class="fa fa-list text-success border-success"></i></div>
+                        <div class="stat-content dib">
+                            <div class="stat-text">Pertanyaan</div>
+                            <div class="stat-digit">
+                                <?php
+                                $qry_kriteria = $pdo->GetAll('tb_kriteria', 'id_kriteria');
+                                $sum_kriteria = $qry_kriteria->rowCount();
+                                echo $sum_kriteria;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="fa fa-list text-success border-success"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Penilaian</div>
                             <div class="stat-digit">
@@ -114,7 +114,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="fa fa-list text-danger border-danger"></i></div>
+                        <div class="stat-icon dib"><i class="fa fa-list text-success border-success"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Evaluasi</div>
                             <div class="stat-digit">

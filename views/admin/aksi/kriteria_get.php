@@ -6,6 +6,7 @@ $row = $qry->fetch(PDO::FETCH_OBJ);
 $result = [];
 $result = [
     "id_kriteria" => $row->id_kriteria,
+    "id_poin"     => $row->id_poin,
     "nama"        => $row->nama,
     "bobot"       => $row->bobot,
     "tipe"        => $row->tipe,
