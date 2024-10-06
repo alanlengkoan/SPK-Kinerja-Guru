@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">
-                        Sistem Pendukung Keputusan Metode Aras
+                        Sistem Pendukung Keputusan Penilaian Kinerja Guru SMA Frater Makassar
                     </h3>
                 </div>
             </div>

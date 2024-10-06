@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">
-                        Sistem Pendukung Keputusan Metode Aras
+                        Sistem Pendukung Keputusan Penilaian Kinerja Guru SMA Frater Makassar
                     </h3>
                 </div>
             </div>
@@ -171,7 +171,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="fa fa-users text-success border-success"></i></div>
+                        <div class="stat-icon dib"><i class="fa fa-list text-success border-success"></i></div>
                         <div class="stat-content dib">
                             <div class="stat-text">Kepala Sekolah</div>
                             <div class="stat-digit">
