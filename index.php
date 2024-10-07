@@ -1,9 +1,9 @@
 <!-- pemanggilan menggunakan php -->
 <?php
-    header('location: pages/index');
+    header('location: pages/login');
 ?>
 
 <!-- pemanggilan menggunakan javascript -->
 <script language="javascript">
-    window.location.href = "pages/index"
+    window.location.href = "pages/login"
 </script>

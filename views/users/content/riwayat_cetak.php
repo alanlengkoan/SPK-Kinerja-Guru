@@ -59,9 +59,12 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
 <!-- CSS -->
 
 <div class="judul">
-    <table align="center">
+    <table align="center" border="0">
         <tr>
-            <td width="600" align="center">
+            <td align="center">
+                <img src="./../../../assets/admin/images/logo.png" alt="" width="100">
+            </td>
+            <td width="" align="center">
                 <h4>LAPORAN HASIL KEPUTUSAN PENILAIAN KINERJA GURU</h4>
                 <h4>SMA FRATER MAKASSAR</h4>
             </td>
