@@ -80,8 +80,8 @@
                                                              <select name="nilai[]" id="nilai_<?= $num_row++ ?>" class="form-control form-control-sm">
                                                                  <option value="">- Pilih -</option>
                                                                  <?php
-                                                                    $query2 = $pdo->GetWhere('tb_kriteria_sub', 'id_kriteria', $row_k->id_kriteria);
-                                                                    while ($row_s = $query2->fetch(PDO::FETCH_OBJ)) { ?>
+                                                                    $query4 = $pdo->GetWhere('tb_kriteria_sub', 'id_kriteria', $row_k->id_kriteria);
+                                                                    while ($row_s = $query4->fetch(PDO::FETCH_OBJ)) { ?>
                                                                      <option value="<?= $row_s->nilai ?>"><?= $row_s->nama ?></option>
                                                                  <?php } ?>
                                                              </select>
