@@ -307,7 +307,7 @@
                                <thead align="center">
                                    <tr>
                                        <th>Rangking</th>
-                                       <th>NIP</th>
+                                       <th>ID</th>
                                        <th>Nama</th>
                                        <th>Jenis Kelamin</th>
                                        <th>Tanggal Lahir</th>

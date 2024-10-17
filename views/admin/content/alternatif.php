@@ -35,15 +35,6 @@
                          <div class="card-body card-block">
                              <div class="row form-group">
                                  <div class="col col-md-3">
-                                     <label for="nip" class=" form-control-label">NIP&nbsp;*</label>
-                                 </div>
-                                 <div class="col-12 col-md-9">
-                                     <input type="text" id="nip" name="nip" class="form-control form-control-sm" placeholder="Masukkan NIP" />
-                                     <small class="help-block form-text error"></small>
-                                 </div>
-                             </div>
-                             <div class="row form-group">
-                                 <div class="col col-md-3">
                                      <label for="nama" class=" form-control-label">Nama&nbsp;*</label>
                                  </div>
                                  <div class="col-12 col-md-9">
@@ -101,7 +92,7 @@
                              <thead align="center">
                                  <tr>
                                      <th>No</th>
-                                     <th>NIP</th>
+                                     <th>ID</th>
                                      <th>Nama</th>
                                      <th>Kelamin</th>
                                      <th>Tanggal Lahir</th>

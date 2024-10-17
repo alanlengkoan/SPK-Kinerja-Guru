@@ -79,11 +79,21 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
 
     <br /><br />
 
+    <p>
+        <?php
+        arsort($hasil_metode);
+        $index = key($hasil_metode);
+        ?>
+        Berdasarkan Hasil Keputusan perhitungan Metode Aras, Guru dibawah nama <b><?= $alternatif[$index]->nama ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
+    </p>
+
+    <br /><br />
+
     <table align="center" border="1">
         <thead>
             <tr>
                 <th>Ranking</th>
-                <th>NIP</th>
+                <th>ID</th>
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
                 <th>Tanggal Lahir</th>
@@ -96,9 +106,6 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
         </thead>
         <tbody align="center">
             <?php
-            arsort($hasil_metode);
-            $index = key($hasil_metode);
-
             $ranking = 1;
             foreach ($hasil_metode as $key => $value) {
                 $nilai = round(($value * 100), 0);
@@ -143,73 +150,69 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
 
     <br /><br />
 
-    <p>
-        Berdasarkan Hasil Keputusan perhitungan Metode Aras, Guru atas nama <b><?= $alternatif[$index]->nama ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
-    </p>
-
-    <br /><br />
-
-    <h3>Keterangan</h3>
-
-    <br /><br />
-
-    <table align="center" border="1">
-        <thead>
-            <tr>
-                <th>Nilai</th>
-                <th>Grade</th>
-                <th>Predikat</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>80 - 100</td>
-                <td>A</td>
-                <td>Sangat Baik</td>
-                <td>Reward</td>
-            </tr>
-            <tr>
-                <td>75 - 79</td>
-                <td>B</td>
-                <td>Baik</td>
-                <td>Reward</td>
-            </tr>
-            <tr>
-                <td>70 - 74</td>
-                <td>C</td>
-                <td>Kurang Baik</td>
-                <td>Evaluasi</td>
-            </tr>
-            <tr>
-                <td>55 - 69</td>
-                <td>D</td>
-                <td>Tidak Baik</td>
-                <td>Evaluasi & Konsekuensi</td>
-            </tr>
-            <tr>
-                <td>0 - 54</td>
-                <td>E</td>
-                <td>Sangat Tidak Baik</td>
-                <td>Evaluasi & Konsekuensi</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <br /><br /><br /><br /><br /><br /><br /><br />
-
-    <table>
+    <table align="center" style="width: 100%;">
         <tr>
-            <td width="500"></td>
+            <td style="font-size: 10px;">
+                <p>Keterangan</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Nilai</th>
+                            <th>Grade</th>
+                            <th>Predikat</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>80 - 100</td>
+                            <td>A</td>
+                            <td>Sangat Baik</td>
+                            <td>Reward</td>
+                        </tr>
+                        <tr>
+                            <td>75 - 79</td>
+                            <td>B</td>
+                            <td>Baik</td>
+                            <td>Reward</td>
+                        </tr>
+                        <tr>
+                            <td>70 - 74</td>
+                            <td>C</td>
+                            <td>Kurang Baik</td>
+                            <td>Evaluasi</td>
+                        </tr>
+                        <tr>
+                            <td>55 - 69</td>
+                            <td>D</td>
+                            <td>Tidak Baik</td>
+                            <td>Evaluasi & Konsekuensi</td>
+                        </tr>
+                        <tr>
+                            <td>0 - 54</td>
+                            <td>E</td>
+                            <td>Sangat Tidak Baik</td>
+                            <td>Evaluasi & Konsekuensi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 30%;"></td>
             <td>
-                <p>Mengetahui,</p>
-                <p>Kepala SMA Frater Makassar</p>
-                <br />
-                <br />
-                <br />
-                <br />
-                <p class="nama">Fr. Silvianus Gole HHK, M.Pd</p>
-                <p>NIP. 19810311 200903 1 001</p>
+                <table>
+                    <tr>
+                        <td>
+                            <p>Makassar, <?= date('d F Y') ?></p>
+                            <p>Mengetahui, </p>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <p class="nama">Fr. Silvianus Gole HHK, M.Pd</p>
+                            <p>Kepala SMA Frater Makassar</p>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>

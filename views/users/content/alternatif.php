@@ -32,7 +32,7 @@
                              <thead align="center">
                                  <tr>
                                      <th>No</th>
-                                     <th>NIP</th>
+                                     <th>ID</th>
                                      <th>Nama</th>
                                      <th>Kelamin</th>
                                      <th>Tanggal Lahir</th>

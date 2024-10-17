@@ -13,5 +13,5 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     setcookie('key', '', time() - 3600, '/', $_SERVER['SERVER_NAME']);
 }
 
-header("location: ../pages/index");
+header("location: ../pages/login");
 exit;

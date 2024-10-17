@@ -1,5 +1,5 @@
 <?php
-$nip = strip_tags($_POST['nip']);
+$nip = $myfun->get_id_otomatis('tb_alternatif', 'nip');
 $nma = strip_tags($_POST['nama']);
 $kel = strip_tags($_POST['kelamin']);
 $tgl = strip_tags($_POST['tgl_lahir']);
