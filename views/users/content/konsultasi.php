@@ -5,9 +5,6 @@
     while ($row = $query->fetch(PDO::FETCH_OBJ)) {
         $aspek[$row->id_aspek] = $row->nama;
     }
-
-    // echo "<pre>";
-    // die(var_dump($aspek));
     ?>
 
  <div class="breadcrumbs">
