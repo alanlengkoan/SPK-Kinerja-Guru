@@ -58,7 +58,7 @@
                             });
 
                             $('#add').removeAttr('disabled');
-                            $('#add').html('<i class="fa fa-plus"></i> Tambah');
+                            $('#add').html('<i class="fa fa-plus"></i>&nbsp;Submit');
                         }
                     }
                 })

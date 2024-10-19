@@ -1,3 +1,15 @@
+ <?php
+    $query  = $pdo->GetAll('tb_aspek', 'id_aspek');
+    $jumlah = $query->rowCount();
+    $aspek  = [];
+    while ($row = $query->fetch(PDO::FETCH_OBJ)) {
+        $aspek[$row->id_aspek] = $row->nama;
+    }
+
+    // echo "<pre>";
+    // die(var_dump($aspek));
+    ?>
+
  <div class="breadcrumbs">
      <div class="col-sm-4">
          <div class="page-header float-left">
@@ -22,167 +34,104 @@
      <div class="animated fadeIn">
          <div class="row">
              <div class="col-lg-12">
-                 <!-- begin:: form -->
                  <div class="card">
-                     <div class="card-header">
-                         <strong>Form</strong>
-                     </div>
                      <form class="form-horizontal" action="aksi/?aksi=konsultasi_save" id="form-add-upd">
                          <!-- begin:: id -->
                          <input type="hidden" name="action" id="action" value="add" />
                          <!-- end:: id -->
 
-                         <div class="card-body card-block">
-
-                             <div class="row form-group">
-                                 <div class="col col-md-3">
-                                     <label for="nama" class=" form-control-label">Guru&nbsp;*</label>
-                                 </div>
-                                 <div class="col-12 col-md-9">
-                                     <select name="id_alternatif" id="id_alternatif" class="form-control form-control-sm">
-                                         <option value="">- Pilih -</option>
-                                         <?php
-                                            $query = $pdo->GetAll('tb_alternatif', 'id_alternatif');
-                                            while ($row = $query->fetch(PDO::FETCH_OBJ)) { ?>
-                                             <option value="<?= $row->id_alternatif ?>"><?= $row->nama ?></option>
-                                         <?php } ?>
-                                     </select>
-                                     <small class="help-block form-text error"></small>
-                                 </div>
-                             </div>
-                             <?php
-                                $query  = $pdo->GetAll('tb_aspek', 'id_aspek');
-                                $jumlah = $query->rowCount();
-                                if ($jumlah > 0) {
-                                    while ($row = $query->fetch(PDO::FETCH_OBJ)) { ?>
-                                     <h4><?= $row->nama; ?></h4>
-                                     <hr />
-                                     <?php
-                                        $query2  = $pdo->GetWhere('tb_poin', 'id_aspek', $row->id_aspek);
-                                        $jumlah2  = $query2->rowCount();
-                                        if ($jumlah2 > 0) {
-                                            while ($row2 = $query2->fetch(PDO::FETCH_OBJ)) { ?>
-                                             <p><?= $row2->nama; ?></p>
-
-                                             <?php
-                                                $query3   = $pdo->GetWhere('tb_kriteria', 'id_poin', $row2->id_poin);
-                                                $jumlah3  = $query3->rowCount();
-                                                $num_row  = 0;
-                                                if ($jumlah3 > 0) {
-                                                    while ($row_k = $query3->fetch(PDO::FETCH_OBJ)) { ?>
-
-                                                     <div class="row form-group">
-                                                         <div class="col col-md-3">
-                                                             <label for="bobot" class=" form-control-label"><?= $row_k->nama ?>&nbsp;*</label>
-                                                         </div>
-                                                         <div class="col-12 col-md-9">
-                                                             <input type="hidden" name="id_kriteria[]" value="<?= $row_k->id_kriteria ?>" />
-                                                             <select name="nilai[]" id="nilai_<?= $num_row++ ?>" class="form-control form-control-sm">
-                                                                 <option value="">- Pilih -</option>
-                                                                 <?php
-                                                                    $query4 = $pdo->GetWhere('tb_kriteria_sub', 'id_kriteria', $row_k->id_kriteria);
-                                                                    while ($row_s = $query4->fetch(PDO::FETCH_OBJ)) { ?>
-                                                                     <option value="<?= $row_s->nilai ?>"><?= $row_s->nama ?></option>
-                                                                 <?php } ?>
-                                                             </select>
-                                                             <small class="help-block form-text error"></small>
-                                                         </div>
-                                                     </div>
-
-                                                 <?php } ?>
-                                             <?php } ?>
-
-                                         <?php } ?>
-                                     <?php } ?>
-                                     <br />
+                         <div class="card-body">
+                             <!-- begin:: name menu tab -->
+                             <ul class="nav nav-tabs" role="tablist">
+                                 <li class="nav-item">
+                                     <a class="nav-link active" href="#guru" data-toggle="tab">GURU</a>
+                                 </li>
+                                 <?php foreach ($aspek as $key => $value) { ?>
+                                     <li class="nav-item">
+                                         <a class="nav-link" href="#<?= strtolower($value) ?>" data-toggle="tab"><?= $value ?></a>
+                                     </li>
                                  <?php } ?>
-                             <?php } ?>
+                             </ul>
+                             <!-- end:: name menu tab -->
+                             <!-- begin:: content menu tab -->
+                             <div class="tab-content">
+                                 <div id="guru" class="tab-pane active">
+                                     <br>
+                                     <div class="row form-group">
+                                         <div class="col-12 col-md-12">
+                                             <label for="nama" class=" form-control-label">Guru&nbsp;*</label>
+                                         </div>
+                                         <div class="col-12 col-md-12">
+                                             <select name="id_alternatif" id="id_alternatif" class="form-control form-control-sm">
+                                                 <option value="">- Pilih -</option>
+                                                 <?php
+                                                    $query = $pdo->GetAll('tb_alternatif', 'id_alternatif');
+                                                    while ($row = $query->fetch(PDO::FETCH_OBJ)) { ?>
+                                                     <option value="<?= $row->id_alternatif ?>"><?= $row->nama ?></option>
+                                                 <?php } ?>
+                                             </select>
+                                             <small class="help-block form-text error"></small>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <?php
+                                    $num_row = 0;
+                                    foreach ($aspek as $key => $value) { ?>
+                                     <div id="<?= strtolower($value) ?>" class="tab-pane">
+                                         <br>
+                                         <?php
+                                            $query2  = $pdo->GetWhere('tb_poin', 'id_aspek', $key);
+                                            $jumlah2 = $query2->rowCount();
+                                            if ($jumlah2 > 0) {
+                                                while ($row2 = $query2->fetch(PDO::FETCH_OBJ)) { ?>
+                                                 <p><?= $row2->nama; ?></p>
+
+                                                 <?php
+                                                    $query3   = $pdo->GetWhere('tb_kriteria', 'id_poin', $row2->id_poin);
+                                                    $jumlah3  = $query3->rowCount();
+                                                    if ($jumlah3 > 0) {
+                                                        while ($row_k = $query3->fetch(PDO::FETCH_OBJ)) { ?>
+
+                                                         <div class="row form-group">
+                                                             <div class="col-12 col-md-12">
+                                                                 <label for="bobot" class=" form-control-label"><?= $row_k->nama ?>&nbsp;*</label>
+                                                             </div>
+                                                             <div class="col-12 col-md-12">
+                                                                 <input type="hidden" name="id_kriteria[]" value="<?= $row_k->id_kriteria ?>" />
+                                                                 <select name="nilai[]" id="nilai_<?= $num_row++ ?>" class="form-control form-control-sm">
+                                                                     <option value="">- Pilih -</option>
+                                                                     <?php
+                                                                        $query4 = $pdo->GetWhere('tb_kriteria_sub', 'id_kriteria', $row_k->id_kriteria);
+                                                                        while ($row_s = $query4->fetch(PDO::FETCH_OBJ)) { ?>
+                                                                         <option value="<?= $row_s->nilai ?>"><?= $row_s->nama ?></option>
+                                                                     <?php } ?>
+                                                                 </select>
+                                                                 <small class="help-block form-text error"></small>
+                                                             </div>
+                                                         </div>
+
+                                                     <?php } ?>
+                                                 <?php } ?>
+
+                                             <?php } ?>
+                                         <?php } ?>
+                                     </div>
+                                 <?php } ?>
+                             </div>
+                             <!-- end:: content menu tab -->
                          </div>
                          <div class="card-footer">
                              <button type="submit" name="add" id="add" class="btn btn-success btn-sm">
-                                 <i class="fa fa-plus"></i> Tambah
+                                 <i class="fa fa-plus"></i>&nbsp;Submit
                              </button>
+                             &nbsp;
+                             <a href="konsultasi_hasil" class="btn btn-primary btn-sm">
+                                 <i class="fa fa-refresh"></i>&nbsp;Hasil
+                             </a>
                          </div>
                      </form>
+
                  </div>
-                 <!-- end:: form -->
-
-                 <?php
-                    // untuk alternatif
-                    $sql_alternatif = "SELECT * FROM tb_alternatif";
-                    $res_alternatif = $pdo->Query($sql_alternatif);
-                    $alternatif     = [];
-                    while ($row_a = $res_alternatif->fetch(PDO::FETCH_OBJ)) {
-                        $alternatif[$row_a->id_alternatif] = $row_a->nama;
-                    }
-
-                    // untuk kriteria
-                    $sql_kriteria = "SELECT * FROM tb_kriteria";
-                    $res_kriteria = $pdo->Query($sql_kriteria);
-                    $kriteria     = [];
-                    while ($row_k = $res_kriteria->fetch(PDO::FETCH_OBJ)) {
-                        $kriteria[$row_k->id_kriteria] = $row_k->nama;
-                    }
-
-                    // untuk kriteria sub
-                    $sql_kriteria_sub = "SELECT * FROM tb_kriteria_sub";
-                    $res_kriteria_sub = $pdo->Query($sql_kriteria_sub);
-                    $kriteria_sub     = [];
-                    while ($row_s = $res_kriteria_sub->fetch(PDO::FETCH_OBJ)) {
-                        $kriteria_sub[$row_s->id_kriteria][$row_s->nilai] = $row_s->nama;
-                    }
-
-                    // untuk evaluasi
-                    $sql_evaluasi = "SELECT * FROM tb_evaluasi ORDER BY id_alternatif, id_kriteria";
-                    $res_evaluasi = $pdo->Query($sql_evaluasi);
-                    $evaluasi     = [];
-                    while ($row_e = $res_evaluasi->fetch(PDO::FETCH_OBJ)) {
-                        $evaluasi[$row_e->id_alternatif][$row_e->id_kriteria] = $row_e->nilai;
-                    }
-                    ?>
-
-                 <!-- begin:: tabel -->
-                 <div class="card">
-                     <div class="card-header">
-                         <div class="row">
-                             <div class="col-6">
-                                 <h5>Tabel</h5>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="card-body">
-                         <table id="data-table" class="table table-striped table-bordered">
-                             <thead align="center">
-                                 <tr>
-                                     <th>No</th>
-                                     <th>Alternatif</th>
-                                     <?php foreach ($kriteria as $key => $value) { ?>
-                                         <th><?= $value ?></th>
-                                     <?php } ?>
-                                     <th>Aksi</th>
-                                 </tr>
-                             </thead>
-                             <tbody align="center">
-                                 <?php
-                                    $no = 1;
-                                    foreach ($evaluasi as $key => $value) { ?>
-                                     <tr>
-                                         <td><?= $no++ ?></td>
-                                         <td><?= $alternatif[$key] ?></td>
-                                         <?php
-                                            foreach ($value as $k => $v) { ?>
-                                             <td><?= $kriteria_sub[$k][$v] ?></td>
-                                         <?php } ?>
-                                         <td>
-                                             <button class="btn btn-primary btn-sm btn-action" id="upd" data-id="<?= $key ?>"><i class="fa fa-edit"></i> Ubah</button>&nbsp;
-                                             <button class="btn btn-danger btn-sm btn-action" id="del" data-id="<?= $key ?>"><i class="fa fa-trash"></i> Hapus</button>
-                                         </td>
-                                     </tr>
-                                 <?php } ?>
-                             </tbody>
-                     </div>
-                 </div>
-                 <!-- end:: tabel -->
              </div>
          </div>
      </div>
