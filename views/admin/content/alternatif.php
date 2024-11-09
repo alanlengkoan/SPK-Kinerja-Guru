@@ -38,7 +38,7 @@
                                      <label for="nama" class=" form-control-label">Nama&nbsp;*</label>
                                  </div>
                                  <div class="col-12 col-md-9">
-                                     <input type="text" id="nama" name="nama" class="form-control form-control-sm" placeholder="Masukkan Nama" />
+                                     <input type="text" id="nama" name="nama" class="form-control form-control-sm" placeholder="Masukkan Nama Guru" />
                                      <small class="help-block form-text error"></small>
                                  </div>
                              </div>

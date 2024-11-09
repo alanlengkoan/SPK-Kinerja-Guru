@@ -35,10 +35,10 @@
                          <div class="card-body card-block">
                              <div class="row form-group">
                                  <div class="col col-md-3">
-                                     <label for="nama" class=" form-control-label">Nama&nbsp;*</label>
+                                     <label for="nama" class=" form-control-label">Aspek&nbsp;*</label>
                                  </div>
                                  <div class="col-12 col-md-9">
-                                     <input type="text" id="nama" name="nama" class="form-control form-control-sm" placeholder="Masukkan Nama" />
+                                     <input type="text" id="nama" name="nama" class="form-control form-control-sm" placeholder="Masukkan Aspek" />
                                      <small class="help-block form-text error"></small>
                                  </div>
                              </div>
