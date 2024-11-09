@@ -2,7 +2,7 @@
         <header id="header" class="header">
             <div class="header-menu">
                 <div class="col-sm-7">
-                    <h4>Wakil Kepala Sekolah</h4>
+                    <h4>Tata Usaha</h4>
                 </div>
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
