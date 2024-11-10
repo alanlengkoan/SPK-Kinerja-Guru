@@ -106,6 +106,10 @@
             $perangkingan[$key] = $value / $si[0];
         }
     }
+
+    if (count($evaluasi) == 0) {
+        echo "<script>alert('Belum ada data yang ingin di proses!');window.location.href='konsultasi';</script>";
+    }
     ?>
 
    <div class="breadcrumbs">
@@ -322,6 +326,7 @@
                                    <?php
                                     arsort($perangkingan);
                                     $index = key($perangkingan);
+                                    $riwayat = [];
 
                                     $rangking = 1;
                                     foreach ($perangkingan as $key => $value) :
@@ -348,6 +353,15 @@
                                             $predikat = 'Sangat Tidak Baik';
                                             $status   = 'Evaluasi & Konsekuensi';
                                         }
+
+                                        $riwayat[] = [
+                                            'id_alternatif' => $key,
+                                            'date'          => date('Y-m-d'),
+                                            'nilai'         => $value,
+                                            'grade'         => $grade,
+                                            'predikat'      => $predikat,
+                                            'status'        => $status
+                                        ];
                                     ?>
                                        <tr>
                                            <td><?= $rangking++ ?></td>
@@ -382,8 +396,31 @@
 
    <?php
     $hasil_metode = json_encode($perangkingan);
-    $member       = $pdo->GetWhere('tb_member', 'id_users', $_SESSION['id_users']);
-    $rowMember    = $member->fetch(PDO::FETCH_OBJ);
 
-    $pdo->Insert("tb_riwayat", ["id_member", "hasil", "tgl"], [$rowMember->id_member, $hasil_metode, date('Y-m-d')]);
+    // insert hasil
+    $pdo->Insert("tb_evaluasi_hasil", ["hasil", "tgl"], [$hasil_metode, date('Y-m-d')]);
+    // insert riwayat
+    foreach ($riwayat as $key => $value) {
+        $pdo->Insert(
+            "tb_riwayat",
+            [
+                "id_alternatif",
+                "date",
+                "nilai",
+                "grade",
+                "predikat",
+                "status"
+            ],
+            [
+                $value['id_alternatif'],
+                $value['date'],
+                $value['nilai'],
+                $value['grade'],
+                $value['predikat'],
+                $value['status']
+            ]
+        );
+    }
+    // truncate evaluasi
+    $pdo->Truncate("tb_evaluasi");
     ?>

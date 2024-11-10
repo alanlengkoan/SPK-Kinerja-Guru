@@ -2,7 +2,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Riwayat</h1>
+                    <h1>Hasil</h1>
                 </div>
             </div>
         </div>
@@ -11,7 +11,7 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="dashboard">Dashboard</a></li>
-                        <li class="active">Riwayat</li>
+                        <li class="active">Hasil</li>
                     </ol>
                 </div>
             </div>
@@ -32,17 +32,13 @@
                                 <thead align="center">
                                     <tr>
                                         <th>No.</th>
-                                        <th>ID Guru</th>
-                                        <th>Nama</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody align="center">
                                     <?php
-                                    $sql = "SELECT a.id_alternatif, a.nip, a.nama, a.kelamin, a.tgl_lahir, a.tmp_lahir FROM tb_alternatif as a ORDER BY a.id_alternatif ASC";
+                                    $sql = "SELECT r.id_evaluasi_hasil, r.tgl AS tgl_konsul FROM tb_evaluasi_hasil AS r ORDER BY r.id_evaluasi_hasil";
                                     $qry = $pdo->Query($sql);
                                     $sum = $qry->rowCount();
                                     $no  = 1;
@@ -50,13 +46,9 @@
                                     while ($row = $qry->fetch(PDO::FETCH_OBJ)) { ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
-                                            <td><?= $row->nip; ?></td>
-                                            <td><?= $row->nama; ?></td>
-                                            <td><?= $row->kelamin; ?></td>
-                                            <td><?= $myfun->tanggal_indo($row->tgl_lahir); ?></td>
-                                            <td><?= $row->tmp_lahir; ?></td>
+                                            <td><?= $row->tgl_konsul ?></td>
                                             <td>
-                                                <a href="content/riwayat_cetak.php?id_alternatif=<?= $row->id_alternatif ?>" class="btn btn-info btn-sm btn-action" target="_blank"><i class="fa fa-print"></i>&nbsp;Cetak</a>
+                                                <a href="content/hasil_cetak.php?id_evaluasi_hasil=<?= $row->id_evaluasi_hasil ?>" class="btn btn-info btn-sm btn-action" target="_blank"><i class="fa fa-print"></i>&nbsp;Cetak</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

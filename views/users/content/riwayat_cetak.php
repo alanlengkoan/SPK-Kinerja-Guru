@@ -11,19 +11,13 @@ $mylog = new my_login;
 // untuk class my_function
 $myfun = new my_function;
 
-// untuk alternatif
-$sql_alternatif = "SELECT * FROM tb_alternatif";
-$res_alternatif = $pdo->Query($sql_alternatif);
-$alternatif = [];
-while ($row_a = $res_alternatif->fetch(PDO::FETCH_OBJ)) {
-    $alternatif[$row_a->id_alternatif] = $row_a;
-}
+$id_alternatif = $_GET['id_alternatif'];
 
-// ambil data laporan
-$id_riwayat   = $_GET['id_riwayat'];
-$qryLaporan   = $pdo->GetWhere('tb_riwayat', 'id_riwayat', $id_riwayat);
-$rowLaporan   = $qryLaporan->fetch(PDO::FETCH_OBJ);
-$hasil_metode = json_decode($rowLaporan->hasil, true);
+$qry = $pdo->GetWhere('tb_alternatif', 'id_alternatif', $id_alternatif);
+$row = $qry->fetch(PDO::FETCH_OBJ);
+
+$qryLaporan = $pdo->GetWhere('tb_riwayat', 'id_alternatif', $id_alternatif);
+$rowCount = $qryLaporan->rowCount();
 ?>
 
 <!-- CSS -->
@@ -75,147 +69,70 @@ $hasil_metode = json_decode($rowLaporan->hasil, true);
 
     <br /><br />
 
-    <h3>Hasil Konsultasi</h3>
+    <h2>Riwayat Hasil Konsultasi</h2>
 
     <br /><br />
 
-    <p>
-        <?php
-        arsort($hasil_metode);
-        $index = key($hasil_metode);
-        ?>
-        Berdasarkan Hasil Keputusan perhitungan Metode Aras, Guru dibawah nama <b><?= $alternatif[$index]->nama ?></b> dengan nilai akhir <b><?= $hasil_metode[$index] ?></b> adalah Peringkat 1.
-    </p>
+    <h3>Guru</h3>
 
-    <br /><br />
-
-    <table align="center" border="1">
-        <thead>
-            <tr>
-                <th>Ranking</th>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Tanggal Lahir</th>
-                <th>Tempat Lahir</th>
-                <th>Nilai</th>
-                <th>Grade</th>
-                <th>Predikat</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody align="center">
-            <?php
-            $ranking = 1;
-            foreach ($hasil_metode as $key => $value) {
-                $nilai = round(($value * 100), 0);
-
-                if ($nilai > 80) {
-                    $grade    = 'A';
-                    $predikat = 'Sangat Baik';
-                    $status   = 'Reward';
-                } elseif ($nilai > 75) {
-                    $grade    = 'B';
-                    $predikat = 'Baik';
-                    $status   = 'Reward';
-                } elseif ($nilai > 70) {
-                    $grade    = 'C';
-                    $predikat = 'Kurang Baik';
-                    $status   = 'Evaluasi';
-                } elseif ($nilai > 55) {
-                    $grade    = 'D';
-                    $predikat = 'Tidak Baik';
-                    $status   = 'Evaluasi & Konsekuensi';
-                } else {
-                    $grade    = 'E';
-                    $predikat = 'Sangat Tidak Baik';
-                    $status   = 'Evaluasi & Konsekuensi';
-                }
-            ?>
-                <tr>
-                    <td><?= $ranking++ ?></td>
-                    <td><?= $alternatif[$key]->nip ?></td>
-                    <td><?= $alternatif[$key]->nama ?></td>
-                    <td><?= $alternatif[$key]->kelamin ?></td>
-                    <td><?= $alternatif[$key]->tgl_lahir ?></td>
-                    <td><?= $alternatif[$key]->tmp_lahir ?></td>
-                    <td><?= $nilai ?></td>
-                    <td><?= $grade ?></td>
-                    <td><?= $predikat ?></td>
-                    <td><?= $status ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-
-    <br /><br />
-
-    <table align="center" style="width: 100%;">
+    <table border="1" align="center">
         <tr>
-            <td style="font-size: 10px;">
-                <p>Keterangan</p>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Nilai</th>
-                            <th>Grade</th>
-                            <th>Predikat</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>80 - 100</td>
-                            <td>A</td>
-                            <td>Sangat Baik</td>
-                            <td>Reward</td>
-                        </tr>
-                        <tr>
-                            <td>75 - 79</td>
-                            <td>B</td>
-                            <td>Baik</td>
-                            <td>Reward</td>
-                        </tr>
-                        <tr>
-                            <td>70 - 74</td>
-                            <td>C</td>
-                            <td>Kurang Baik</td>
-                            <td>Evaluasi</td>
-                        </tr>
-                        <tr>
-                            <td>55 - 69</td>
-                            <td>D</td>
-                            <td>Tidak Baik</td>
-                            <td>Evaluasi & Konsekuensi</td>
-                        </tr>
-                        <tr>
-                            <td>0 - 54</td>
-                            <td>E</td>
-                            <td>Sangat Tidak Baik</td>
-                            <td>Evaluasi & Konsekuensi</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-            <td style="width: 30%;"></td>
-            <td>
-                <table>
-                    <tr>
-                        <td>
-                            <p>Makassar, <?= date('d F Y') ?></p>
-                            <p>Mengetahui, </p>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <p class="nama">Fr. Silvianus Gole HHK, M.Pd</p>
-                            <p>Kepala SMA Frater Makassar</p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
+            <td>ID Guru</td>
+            <td>:</td>
+            <td><?= $row->nip ?></td>
+        </tr>
+        <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td><?= $row->nama ?></td>
+        </tr>
+        <tr>
+            <td>Jenis Kelamin</td>
+            <td>:</td>
+            <td><?= $row->kelamin ?></td>
+        </tr>
+        <tr>
+            <td>Tanggal Lahir</td>
+            <td>:</td>
+            <td><?= $myfun->tanggal_indo($row->tgl_lahir) ?></td>
+        </tr>
+        <tr>
+            <td>Tempat Lahir</td>
+            <td>:</td>
+            <td><?= $row->tmp_lahir ?></td>
         </tr>
     </table>
+
+    <br /><br />
+
+    <h3>Detail</h3>
+
+    <?php if ($rowCount == 0) { ?>
+        <p style="text-align: center;">Belum ada rekam data</p>
+    <?php } else { ?>
+        <table border="1" align="center">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Nilai</th>
+                    <th>Grade</th>
+                    <th>Predikat</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody align="center">
+                <?php while ($row = $qryLaporan->fetch(PDO::FETCH_OBJ)) { ?>
+                    <tr>
+                        <td><?= $row->date; ?></td>
+                        <td><?= $row->nilai; ?></td>
+                        <td><?= $row->grade; ?></td>
+                        <td><?= $row->predikat; ?></td>
+                        <td><?= $row->status; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    <?php } ?>
 </div>
 
 <?php

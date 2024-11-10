@@ -59,10 +59,16 @@
                     </a>
                 </li>
                 <h3 class="menu-title">Laporan</h3>
+                <li class="<?= ($_REQUEST['content'] == "hasil") ? 'active' : '' ?>">
+                    <a href="hasil">
+                        <i class="menu-icon fa fa-list"></i>
+                        Hasil Evaluasi
+                    </a>
+                </li>
                 <li class="<?= ($_REQUEST['content'] == "riwayat") ? 'active' : '' ?>">
                     <a href="riwayat">
                         <i class="menu-icon fa fa-list"></i>
-                        Riwayat
+                        Riwayat Evaluasi Guru
                     </a>
                 </li>
             </ul>

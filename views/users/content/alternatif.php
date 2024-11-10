@@ -32,16 +32,16 @@
                              <thead align="center">
                                  <tr>
                                      <th>No</th>
-                                     <th>ID</th>
+                                     <th>ID Guru</th>
                                      <th>Nama</th>
-                                     <th>Kelamin</th>
+                                     <th>Jenis Kelamin</th>
                                      <th>Tanggal Lahir</th>
                                      <th>Tempat Lahir</th>
                                  </tr>
                              </thead>
                              <tbody align="center">
                                  <?php
-                                    $sql    = "SELECT tb_alternatif.id_alternatif, tb_alternatif.nip, tb_alternatif.nama,  tb_alternatif.kelamin, tb_alternatif.tgl_lahir, tb_alternatif.tmp_lahir FROM tb_alternatif ORDER BY tb_alternatif.id_alternatif ASC";
+                                    $sql    = "SELECT a.id_alternatif, a.nip, a.nama, a.kelamin, a.tgl_lahir, a.tmp_lahir FROM tb_alternatif as a ORDER BY a.id_alternatif ASC";
                                     $query  = $pdo->Query($sql);
                                     $jumlah = $query->rowCount();
                                     $no = 1;
