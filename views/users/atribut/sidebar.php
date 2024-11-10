@@ -62,7 +62,7 @@
                 <li class="<?= ($_REQUEST['content'] == "hasil") ? 'active' : '' ?>">
                     <a href="hasil">
                         <i class="menu-icon fa fa-list"></i>
-                        Hasil Evaluasi
+                        Hasil Rekomendasi
                     </a>
                 </li>
                 <li class="<?= ($_REQUEST['content'] == "riwayat") ? 'active' : '' ?>">
