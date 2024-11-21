@@ -81,7 +81,7 @@
                                             $jumlah2 = $query2->rowCount();
                                             if ($jumlah2 > 0) {
                                                 while ($row2 = $query2->fetch(PDO::FETCH_OBJ)) { ?>
-                                                 <p><?= $row2->nama; ?></p>
+                                                 <p style = " color : black;"><b><?= $row2->nama; ?></b></p>
 
                                                  <?php
                                                     $query3   = $pdo->GetWhere('tb_kriteria', 'id_poin', $row2->id_poin);

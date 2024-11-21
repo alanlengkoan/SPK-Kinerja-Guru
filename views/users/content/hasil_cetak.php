@@ -222,7 +222,7 @@ $hasil_metode      = json_decode($rowLaporan->hasil, true);
 // proses untuk menampilkan file pdf
 $content = ob_get_clean();
 include_once "./../../../vendors/html2pdf/html2pdf.class.php";
-$html2pdf = new HTML2PDF('P', 'A4', 'en', 'utf-8');
+$html2pdf = new HTML2PDF('L', 'A4', 'en', 'utf-8');
 $html2pdf->WriteHTML($content);
 $html2pdf->Output('Cetak Riwayat.pdf');
 ?>
